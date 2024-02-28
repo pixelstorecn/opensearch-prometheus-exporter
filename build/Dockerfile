@@ -6,7 +6,7 @@ RUN mkdir /etc/supervisord.d && \
     mkdir /usr/local/opensearch-prometheus-exporter
 
 ADD main.py /usr/local/opensearch-prometheus-exporter
-ADD build/supervisord.conf /etc
+ADD build/supervisord.conf /etc/supervisord.conf
 ADD build/supervisord.d/*.ini /etc/supervisord.d
 
 CMD ["supervisord","-c /etc/supervisord.conf"]
