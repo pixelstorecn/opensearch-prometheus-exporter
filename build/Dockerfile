@@ -11,4 +11,4 @@ ADD main.py /usr/local/opensearch-prometheus-exporter
 ADD build/supervisord.conf /etc/supervisord.conf
 ADD build/supervisord.d/*.ini /etc/supervisord.d
 
-CMD ["supervisord","-c /etc/supervisord.conf"]
+CMD ["supervisord","-n","-c /etc/supervisord.conf"]
