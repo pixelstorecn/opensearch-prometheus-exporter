@@ -17,8 +17,8 @@ opensearch_password = os.getenv('OPENSEARCH_PASSWORD')
 app = FastAPI()
 @app.get('/metrics', response_class=PlainTextResponse)
 def get_data():
-    es_addr = "http://opensearch_address:9200/_cat/shards?format=json&bytes=mb"
-    data_str = rq.get(es_addr, auth=('opensearch_username', 'opensearch_password'))
+    es_addr = "http://"+opensearch_address+":9200/_cat/shards?format=json&bytes=mb"
+    data_str = rq.get(es_addr, auth=(opensearch_username, opensearch_password))
     data_arr = json.loads(data_str.content)
     REGISTRY = CollectorRegistry(auto_describe=False)
     opensearch_shards_docs = Gauge("opensearch_shards_docs", "OpenSearch Shards Docs Count", ["index", "shard", "prirep", "ip", "node"], registry=REGISTRY)
