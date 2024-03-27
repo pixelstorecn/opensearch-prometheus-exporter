@@ -22,7 +22,7 @@ def get_data():
     es_cluster_addr = "http://"+opensearch_address+":9200/_cat/health?format=json"
     cluster_str = rq.get(es_cluster_addr, auth=(opensearch_username, opensearch_password))
     cluster_arr = json.loads(cluster_str.content)
-    cluster = cluster_arr["cluster"]
+    cluster = cluster_arr[0]["cluster"]
     
     es_shards_addr = "http://"+opensearch_address+":9200/_cat/shards?format=json&bytes=mb"
     data_str = rq.get(es_shards_addr, auth=(opensearch_username, opensearch_password))
