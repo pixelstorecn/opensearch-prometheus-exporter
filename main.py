@@ -44,7 +44,7 @@ def get_data():
                 shortname = item_index[:-8]
             else:
                 shortname = item_index
-            opensearch_shards_docs.labels(item['index'],item['shard'],item['prirep'],item['instance_ip'],item['node'],shortname,cluster).set(item['docs'])
+            opensearch_shards_docs.labels(item['index'],item['shard'],item['prirep'],item['ip'],item['node'],shortname,cluster).set(item['docs'])
     for item in data_arr:
         pattern_hour = r"^([a-zA-Z-]*)-([0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2})$"
         pattern_day = r"^([a-zA-Z-_]*)-([0-9]{4}-[0-9]{2}-[0-9]{2})$"
@@ -59,7 +59,7 @@ def get_data():
                 shortname = item_index[:-8]
             else:
                 shortname = item_index
-            opensearch_shards_size.labels(item['index'],item['shard'],item['prirep'],item['instance_ip'],item['node'],shortname,cluster).set(item['store'])
+            opensearch_shards_size.labels(item['index'],item['shard'],item['prirep'],item['ip'],item['node'],shortname,cluster).set(item['store'])
     return prometheus_client.generate_latest(REGISTRY)
 
 if __name__ == "__main__":
