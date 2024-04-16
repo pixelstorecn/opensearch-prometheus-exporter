@@ -33,6 +33,7 @@ def get_data():
     for item in data_arr:
         pattern_hour = r"^([a-zA-Z-]*)-([0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2})$"
         pattern_day = r"^([a-zA-Z-_]*)-([0-9]{4}-[0-9]{2}-[0-9]{2})$"
+        pattern_day2 = r"^([a-zA-Z-_]*)-([0-9]{8})$"
         pattern_month = r"^([a-zA-Z-]*)-([0-9]{4}-[0-9]{2})$"
         if item['docs'] != None:
             item_index = item['index']
@@ -40,6 +41,8 @@ def get_data():
                 shortname = item_index[:-14]
             elif re.search(pattern_day, item_index):
                 shortname = item_index[:-11]
+            elif re.search(pattern_day2, item_index):
+                shortname = item_index[:-9]
             elif re.search(pattern_month, item_index):
                 shortname = item_index[:-8]
             else:
@@ -48,6 +51,7 @@ def get_data():
     for item in data_arr:
         pattern_hour = r"^([a-zA-Z-]*)-([0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2})$"
         pattern_day = r"^([a-zA-Z-_]*)-([0-9]{4}-[0-9]{2}-[0-9]{2})$"
+        pattern_day2 = r"^([a-zA-Z-_]*)-([0-9]{8})$"
         pattern_month = r"^([a-zA-Z-]*)-([0-9]{4}-[0-9]{2})$"
         if item['store'] != None:
             item_index = item['index']
@@ -55,6 +59,8 @@ def get_data():
                 shortname = item_index[:-14]
             elif re.search(pattern_day, item_index):
                 shortname = item_index[:-11]
+            elif re.search(pattern_day2, item_index):
+                shortname = item_index[:-9]
             elif re.search(pattern_month, item_index):
                 shortname = item_index[:-8]
             else:
